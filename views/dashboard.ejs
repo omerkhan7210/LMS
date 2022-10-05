@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <%- include("./partials/head.ejs") %>
+
+</head>
+<body>
+
+    <main class="row-grid grid-col-2 header">
+
+        <%- include("./partials/lms_header.ejs")%>
+
+        <section class="main-container row-flex flex-col">
+            <div class="main-head row-flex center-flex">
+                <h1 class="main-heading">Dashboard</h1>
+            </div>
+
+            
+            <div class="selection row-flex space-ar align-center">
+                <div class="select-heading">
+                    <h1 class="main-heading">Courses Registered</h1>
+                </div>
+                <div class="select-menu">
+                    <div class="select-btn">
+                    <span class="sBtn-text">Semester:</span>
+                    <i class="fa fa-chevron-down" style="font-size: 12px;"></i>
+                    </div>
+                
+                    <ul class="options">
+                    <li class="option">
+                        <span class="option-text">Fall:2022</span>
+                    </li>
+                    
+                    </ul>
+                </div>
+            </div>
+
+            <div class="list-table-container">
+                <% if(courses_registered > 0){ %>
+                        <% listTableContainer.forEach(li => { %>
+                          <%- li %>  
+                        <% }); %>
+                <% }else{%>
+                    <p>No Courses Registered To Display</p>
+                    <a href="/register-courses" class="reg-btn">Register Courses Here</a>
+                <%}%>
+            </div>
+    
+        </section>
+        
+    </main>
+
+    <script src="js/lms.js"></script>
+</body>
+</html>

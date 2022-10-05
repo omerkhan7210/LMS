@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <%- include("./partials/head.ejs") %>
+    <link rel="stylesheet" href="css/modal.css">
+
+</head>
+<body>
+
+    <main class="row-grid grid-col-2 header">
+
+        <%- include("./partials/lms_header.ejs")%>
+
+
+        <section class="main-container row-flex flex-col">
+            <div class="main-head row-flex center-flex">
+                <h1 class="main-heading">Offered Courses</h1>
+            </div>
+
+
+            <style>
+                .modal form input{
+                    display: flex;
+                    flex-direction: column;
+                    gap:1rem;
+                    padding:0.3rem 0.5rem;
+                    border: none;
+                    outline: none;
+                    background-color: rgba(0,0,0,0.08);
+                }
+            </style>
+            <button data-modal-target="modal2" class="reg-btn padding-block1 padding-inline2">
+                ADD A COURSE
+            </button>
+
+            
+              <div class="modal" id="modal2">
+                <div class="modal-content">
+                  <h5 class="modal-close">&times;</h5>
+                  <h5 class="modal-heading">ADD A COURSE</h5>
+                    <form action="/Register-Courses" method="POST">
+                        <input type="text" name="code" placeholder="Enter Course Code">
+                        <input type="text" name="title" placeholder="Enter Course Title">
+                        <input type="text" name="credit_hours" placeholder="Enter Course Credit Hours">
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+              </div>
+
+           
+            <div class="list-table-container">
+                <% if(added_courses > 0){%>
+
+                    <% listTableContainer.forEach(li => { %>
+                        <%- li %>  
+                    <% }); %>
+
+                <% }else{ %>
+                    <p>No Courses To Show.Please Add From Above Button <i class="fa fa-chevron-up"></i></p>
+                <% } %>
+            </div>
+             
+
+        </section>
+    </main>
+
+    <script src="js/modal.js"></script>
+    <script src="js/lms.js"></script>
+</body>
+</html>
